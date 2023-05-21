@@ -7,24 +7,41 @@ on:
 jobs:
   First:
     runs-on: ubuntu-latest
-    outputs:
-      is_ios_affected: ${{ steps.checks.outputs.is_ios_affected }}
     steps:
-      - name: Check variables
-        id: checks
-        run: |
-          echo "is_ios_affected=true" >> $GITHUB_OUTPUT
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          set-safe-directory: true
 
-      - name: Is secret available?
-        run: |
-          echo "MY_SECRET: ${{ secrets.MY_SECRET }}"
+      - name: Install packages
+        run: npm install
 
-  Second:
-    needs: First
-    if: ${{ needs.First.outputs.is_ios_affected == 'true' }}
-    uses: ./.github/workflows/deploy.yml
-    secrets:
-      MY_SECRET: ${{ secrets.MY_SECRET }}
+      - name: Run code
+        run: node index.js
+        with:
+          releaseTarget: minor
+  
+  # First:
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     is_ios_affected: ${{ steps.checks.outputs.is_ios_affected }}
+  #   steps:
+  #     - name: Check variables
+  #       id: checks
+  #       run: |
+  #         echo "is_ios_affected=true" >> $GITHUB_OUTPUT
+
+  #     - name: Is secret available?
+  #       run: |
+  #         echo "MY_SECRET: ${{ secrets.MY_SECRET }}"
+
+  # Second:
+  #   needs: First
+  #   if: ${{ needs.First.outputs.is_ios_affected == 'true' }}
+  #   uses: ./.github/workflows/deploy.yml
+  #   secrets:
+  #     MY_SECRET: ${{ secrets.MY_SECRET }}
           
   # second:
   #   runs-on: ubuntu-latest
