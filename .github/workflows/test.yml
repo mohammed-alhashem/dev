@@ -23,4 +23,4 @@ jobs:
         shell: bash
         run: |
           echo "Actor ${{ github.actor }}"
-          echo "is_ios_affected: ${{ needs.First.steps.checks.outputs.is_ios_affected }}"
+          echo "is_ios_affected: ${{ needs.First.outputs.is_ios_affected }}"
