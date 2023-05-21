@@ -13,7 +13,7 @@ jobs:
       - name: Check variables
         id: checks
         run: |
-          echo "is_ios_affected=false" >> $GITHUB_OUTPUT
+          echo "is_ios_affected=true" >> $GITHUB_OUTPUT
           
   Second:
     runs-on: ubuntu-latest
