@@ -23,6 +23,8 @@ jobs:
     needs: First
     if: ${{ needs.First.outputs.is_ios_affected == 'true' }}
     uses: ./.github/workflows/deploy.yml
+    secrets:
+      MY_SECRET: ${{ secrets.MY_SECRET }}
           
   # second:
   #   runs-on: ubuntu-latest

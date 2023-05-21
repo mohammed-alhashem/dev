@@ -2,7 +2,8 @@ name: Deploy
 on:
   workflow_call:
     secrets:
-      MY_SECRET: ${{ secrets.MY_SECRET }}
+      MY_SECRET:
+        required: true
 
 jobs:
   Deploy:
