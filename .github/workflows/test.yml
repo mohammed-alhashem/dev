@@ -10,7 +10,8 @@ jobs:
     steps:
       - name: Check variables
         id: checks
-        run: echo "is_ios_affected=true" >> $GITHUB_OUTPUT
+        run: |
+          echo "env_name=release" >> $GITHUB_OUTPUT
           
   Second:
     runs-on: ubuntu-latest
@@ -20,4 +21,4 @@ jobs:
         shell: bash
         run: |
           echo "Actor ${{ github.actor }}"
-          echo "is_ios_affected: ${{ needs.First.steps.checks.outputs.is_ios_affected }}"
+          echo "is_ios_affected: ${{ needs.First.steps.checks.outputs.env_name }}"
