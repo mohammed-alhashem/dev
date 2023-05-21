@@ -8,19 +8,23 @@ jobs:
   First:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Checkout Code
         uses: actions/checkout@v3
+
+      - name: Get Next Version
+        id: semver
+        uses: ietf-tools/semver-action@v1
         with:
-          fetch-depth: 0
-          set-safe-directory: true
+          token: ${{ github.token }}
+          branch: main
 
-      - name: Install packages
-        run: npm install
+      # - name: Install packages
+      #   run: npm install
 
-      - name: Run code
-        run: ts-node index.ts
-        env:
-          RELEASE_TARGET: major
+      # - name: Run code
+      #   run: ts-node index.ts
+      #   env:
+      #     RELEASE_TARGET: major
   
   # First:
   #   runs-on: ubuntu-latest
