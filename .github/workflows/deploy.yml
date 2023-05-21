@@ -1,0 +1,11 @@
+name: Deploy
+on:
+  workflow_call:
+
+jobs:
+  deploy_project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Is secret available?
+        run: |
+          echo "MY_SECRET: ${{ secrets.MY_SECRET }}"
