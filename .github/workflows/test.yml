@@ -18,9 +18,9 @@ jobs:
         run: npm install
 
       - name: Run code
-        run: node index.js
+        run: ts-node index.ts
         env:
-          RELEASE_TARGET: minor
+          RELEASE_TARGET: major
   
   # First:
   #   runs-on: ubuntu-latest
