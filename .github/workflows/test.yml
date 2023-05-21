@@ -18,6 +18,11 @@ jobs:
           token: ${{ github.token }}
           branch: main
 
+      - name: Check next Version
+        run: |
+          echo "Current version: ${{ steps.semver.outputs.current }}"
+          echo "Next version: ${{ steps.semver.outputs.next }}"
+
       # - name: Install packages
       #   run: npm install
 
