@@ -18,7 +18,7 @@ jobs:
   Second:
     runs-on: ubuntu-latest
     needs: First
-    if: ${{ needs.First.outputs.is_ios_affected == true }}"
+    if: ${{ needs.First.outputs.is_ios_affected == 'true' }}"
     steps:
       - name: Print name
         shell: bash
