@@ -18,9 +18,9 @@ jobs:
         run: npm install
 
       - name: Run code
-        run: node index.js
         with:
           releaseTarget: minor
+        run: node index.js
   
   # First:
   #   runs-on: ubuntu-latest
