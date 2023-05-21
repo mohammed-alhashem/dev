@@ -13,9 +13,8 @@ jobs:
         run: echo "is_ios_affected=true" >> $GITHUB_OUTPUT
           
   Second:
-    needs: First
     runs-on: ubuntu-latest
-    if: ${{ needs.First.steps.checks.checks }}
+    needs: First
     steps:
       - name: Print name
         shell: bash
