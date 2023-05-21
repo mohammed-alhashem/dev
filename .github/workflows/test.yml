@@ -20,3 +20,4 @@ jobs:
         shell: bash
         run: |
           echo "Actor ${{ github.actor }}"
+          echo "is_ios_affected: ${{ needs.First.steps.checks.checks }}"
