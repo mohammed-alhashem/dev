@@ -20,7 +20,8 @@ jobs:
       - name: Run code
         with:
           releaseTarget: minor
-        run: node index.js
+        run: |
+          node index.js
   
   # First:
   #   runs-on: ubuntu-latest
