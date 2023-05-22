@@ -8,21 +8,30 @@ jobs:
   First:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Get Next Version
-        id: semver
-        uses: ietf-tools/semver-action@v1
-        with:
-          token: ${{ github.token }}
-          branch: main
-
-      - name: Check next Version
+      - name: Branch name
         run: |
-          echo "Current version: ${{ steps.semver.outputs.current }}"
-          echo "Next version: ${{ steps.semver.outputs.next }}"
-          echo "Extra show!"
+          echo "Branch name: ${{ github.ref }}"  
+          echo "Commit sha: ${{ github.sha }}"
+          echo "Base ref: ${{ github.base_ref	}}"
+          echo "Head ref: ${{ github.head_ref }}"
+          echo "Ref name: ${{ github.ref_name }}"
+
+
+      # - name: Checkout Code
+      #   uses: actions/checkout@v3
+
+      # - name: Get Next Version
+      #   id: semver
+      #   uses: ietf-tools/semver-action@v1
+      #   with:
+      #     token: ${{ github.token }}
+      #     branch: main
+
+      # - name: Check next Version
+      #   run: |
+      #     echo "Current version: ${{ steps.semver.outputs.current }}"
+      #     echo "Next version: ${{ steps.semver.outputs.next }}"
+      #     echo "Extra show!"
 
       # - name: Install packages
       #   run: npm install
