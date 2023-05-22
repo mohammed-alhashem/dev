@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Context
         run: |
+          echo "APP_STORE_CONNECT_API_KEY_ID=${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}" >> $GITHUB_ENV
+          echo "Key ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}"
+          echo "Key ID 2: $APP_STORE_CONNECT_API_KEY_ID"
           echo "Branch name: ${{ github.ref }}"  
           echo "Commit sha: ${{ github.sha }}"
           echo "Base ref: ${{ github.base_ref	}}"
