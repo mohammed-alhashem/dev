@@ -3,15 +3,16 @@ on:
   push:
     branches:
       - '*'
-      - 'hotfix/**'
 
 jobs:
   First:
     runs-on: ubuntu-latest
     steps:
       - name: Context
+        id: mycontext
         run: |
           echo "APP_STORE_CONNECT_API_KEY_ID=${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}" >> $GITHUB_ENV
+          echo "APP_STORE_CONNECT_API_KEY_ID=${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}" >> $GITHUB_OUTPUT
           echo "Key ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}"
           echo "Key ID 2: $APP_STORE_CONNECT_API_KEY_ID"
           echo "Branch name: ${{ github.ref }}"  
@@ -19,6 +20,11 @@ jobs:
           echo "Base ref: ${{ github.base_ref	}}"
           echo "Head ref: ${{ github.head_ref }}"
           echo "Ref name: ${{ github.ref_name }}"
+
+      - name: Get variables
+        run: |
+          echo "Key ID 2: $APP_STORE_CONNECT_API_KEY_ID"
+          echo "Key ID 3: ${{ steps.mycontext.outputs.APP_STORE_CONNECT_API_KEY_ID }}"
 
 
       # - name: Checkout Code
