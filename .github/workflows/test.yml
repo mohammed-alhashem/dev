@@ -8,7 +8,7 @@ jobs:
   First:
     runs-on: ubuntu-latest
     steps:
-      - name: Branch name
+      - name: Context
         run: |
           echo "Branch name: ${{ github.ref }}"  
           echo "Commit sha: ${{ github.sha }}"
