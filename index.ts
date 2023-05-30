@@ -1,1 +1,0 @@
-console.log(`This is the release target: ${process.env.RELEASE_TARGET}`);
